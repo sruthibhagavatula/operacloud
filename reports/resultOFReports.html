@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>ExtentReports</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Jul 27, 2021 06:47:49 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>5</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>92</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Previewing multiple reports</span>
+						<span class='test-time'>Jul 27, 2021 06:48:05 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 27, 2021 06:48:05 PM</span>
+	<span class='label end-time'>Jul 27, 2021 06:57:04 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 8m 58s+792ms</span>
+</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1 leaf pass' status='pass' test-id='2'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Previewing multiple reports</h5>
+						<span class="node-time label grey lighten-1 white-text">Jul 27, 2021 06:57:04 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 8m 58s+790ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:48:10 PM</td>
+													<td class='step-details'>successfully enteredNEWCAADMIN username<img data-featherlight='.././snaps/img56242.png' width='10%' src='.././snaps/img56242.png' data-src='.././snaps/img56242.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:48:16 PM</td>
+													<td class='step-details'>password entered Welcome123 successfully<img data-featherlight='.././snaps/img48906.png' width='10%' src='.././snaps/img48906.png' data-src='.././snaps/img48906.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:48:48 PM</td>
+													<td class='step-details'>successfully clicked on login button<img data-featherlight='.././snaps/img71070.png' width='10%' src='.././snaps/img71070.png' data-src='.././snaps/img71070.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:49:06 PM</td>
+													<td class='step-details'>click on reports successful<img data-featherlight='.././snaps/img39765.png' width='10%' src='.././snaps/img39765.png' data-src='.././snaps/img39765.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:49:12 PM</td>
+													<td class='step-details'>click on shift reports successful<img data-featherlight='.././snaps/img5499.png' width='10%' src='.././snaps/img5499.png' data-src='.././snaps/img5499.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:49:22 PM</td>
+													<td class='step-details'>successfully clicked on new button<img data-featherlight='.././snaps/img85345.png' width='10%' src='.././snaps/img85345.png' data-src='.././snaps/img85345.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:50:38 PM</td>
+													<td class='step-details'>successfully entered the newly created report in search field<img data-featherlight='.././snaps/img48027.png' width='10%' src='.././snaps/img48027.png' data-src='.././snaps/img48027.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:50:43 PM</td>
+													<td class='step-details'>click on search button successful<img data-featherlight='.././snaps/img76357.png' width='10%' src='.././snaps/img76357.png' data-src='.././snaps/img76357.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:50:53 PM</td>
+													<td class='step-details'>click on report is successful<img data-featherlight='.././snaps/img53859.png' width='10%' src='.././snaps/img53859.png' data-src='.././snaps/img53859.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:51:03 PM</td>
+													<td class='step-details'>click on Actions is successful<img data-featherlight='.././snaps/img61685.png' width='10%' src='.././snaps/img61685.png' data-src='.././snaps/img61685.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:51:09 PM</td>
+													<td class='step-details'>click on view options successful<img data-featherlight='.././snaps/img42444.png' width='10%' src='.././snaps/img42444.png' data-src='.././snaps/img42444.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:51:24 PM</td>
+													<td class='step-details'>click on click process successful<img data-featherlight='.././snaps/img46575.png' width='10%' src='.././snaps/img46575.png' data-src='.././snaps/img46575.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:52:43 PM</td>
+													<td class='step-details'>window switched successfully to title OPERA Cloud<img data-featherlight='.././snaps/img25913.png' width='10%' src='.././snaps/img25913.png' data-src='.././snaps/img25913.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:53:42 PM</td>
+													<td class='step-details'>Report execution status is completed<img data-featherlight='.././snaps/img39526.png' width='10%' src='.././snaps/img39526.png' data-src='.././snaps/img39526.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:54:37 PM</td>
+													<td class='step-details'>Report execution status is completed<img data-featherlight='.././snaps/img68997.png' width='10%' src='.././snaps/img68997.png' data-src='.././snaps/img68997.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:55:11 PM</td>
+													<td class='step-details'>verified the report view title<img data-featherlight='.././snaps/img25965.png' width='10%' src='.././snaps/img25965.png' data-src='.././snaps/img25965.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:56:03 PM</td>
+													<td class='step-details'>window switched successfully to title<img data-featherlight='.././snaps/img73476.png' width='10%' src='.././snaps/img73476.png' data-src='.././snaps/img73476.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:57:04 PM</td>
+													<td class='step-details'>click on useroptions passed<img data-featherlight='.././snaps/img57381.png' width='10%' src='.././snaps/img57381.png' data-src='.././snaps/img57381.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+	</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Downloading a report</span>
+						<span class='test-time'>Jul 27, 2021 06:57:19 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 27, 2021 06:57:19 PM</span>
+	<span class='label end-time'>Jul 27, 2021 06:59:57 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 38s+790ms</span>
+</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1 leaf pass' status='pass' test-id='4'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Downloading a report</h5>
+						<span class="node-time label grey lighten-1 white-text">Jul 27, 2021 06:59:57 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 2m 38s+790ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:57:24 PM</td>
+													<td class='step-details'>successfully enteredNEWCAADMIN username<img data-featherlight='.././snaps/img34786.png' width='10%' src='.././snaps/img34786.png' data-src='.././snaps/img34786.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:57:30 PM</td>
+													<td class='step-details'>password entered Welcome123 successfully<img data-featherlight='.././snaps/img27199.png' width='10%' src='.././snaps/img27199.png' data-src='.././snaps/img27199.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:57:58 PM</td>
+													<td class='step-details'>successfully clicked on login button<img data-featherlight='.././snaps/img80170.png' width='10%' src='.././snaps/img80170.png' data-src='.././snaps/img80170.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:58:09 PM</td>
+													<td class='step-details'>successfully clicked on menu<img data-featherlight='.././snaps/img28744.png' width='10%' src='.././snaps/img28744.png' data-src='.././snaps/img28744.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:58:19 PM</td>
+													<td class='step-details'>click on operacloud link successful<img data-featherlight='.././snaps/img80764.png' width='10%' src='.././snaps/img80764.png' data-src='.././snaps/img80764.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:58:37 PM</td>
+													<td class='step-details'>click on reports successful<img data-featherlight='.././snaps/img10456.png' width='10%' src='.././snaps/img10456.png' data-src='.././snaps/img10456.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:58:47 PM</td>
+													<td class='step-details'>click on manage reports successful<img data-featherlight='.././snaps/img69580.png' width='10%' src='.././snaps/img69580.png' data-src='.././snaps/img69580.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:58:53 PM</td>
+													<td class='step-details'>selected report group successfully<img data-featherlight='.././snaps/img51106.png' width='10%' src='.././snaps/img51106.png' data-src='.././snaps/img51106.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:59:03 PM</td>
+													<td class='step-details'>click on search button successful<img data-featherlight='.././snaps/img12889.png' width='10%' src='.././snaps/img12889.png' data-src='.././snaps/img12889.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:59:16 PM</td>
+													<td class='step-details'>click on report is successful<img data-featherlight='.././snaps/img75376.png' width='10%' src='.././snaps/img75376.png' data-src='.././snaps/img75376.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:59:21 PM</td>
+													<td class='step-details'>click on downloadas button successful<img data-featherlight='.././snaps/img39609.png' width='10%' src='.././snaps/img39609.png' data-src='.././snaps/img39609.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:59:27 PM</td>
+													<td class='step-details'>check  HTML radio button  successful<img data-featherlight='.././snaps/img42648.png' width='10%' src='.././snaps/img42648.png' data-src='.././snaps/img42648.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:59:32 PM</td>
+													<td class='step-details'>click on download button successful<img data-featherlight='.././snaps/img26705.png' width='10%' src='.././snaps/img26705.png' data-src='.././snaps/img26705.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>6:59:57 PM</td>
+													<td class='step-details'>click on useroptions passed<img data-featherlight='.././snaps/img69149.png' width='10%' src='.././snaps/img69149.png' data-src='.././snaps/img69149.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+	</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>email a report</span>
+						<span class='test-time'>Jul 27, 2021 07:00:13 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 27, 2021 07:00:13 PM</span>
+	<span class='label end-time'>Jul 27, 2021 07:02:40 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 27s+561ms</span>
+</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1 leaf pass' status='pass' test-id='6'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>email a report</h5>
+						<span class="node-time label grey lighten-1 white-text">Jul 27, 2021 07:02:40 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 2m 27s+561ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:00:18 PM</td>
+													<td class='step-details'>successfully enteredNEWCAADMIN username<img data-featherlight='.././snaps/img84236.png' width='10%' src='.././snaps/img84236.png' data-src='.././snaps/img84236.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:00:24 PM</td>
+													<td class='step-details'>password entered Welcome123 successfully<img data-featherlight='.././snaps/img3460.png' width='10%' src='.././snaps/img3460.png' data-src='.././snaps/img3460.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:00:52 PM</td>
+													<td class='step-details'>successfully clicked on login button<img data-featherlight='.././snaps/img11573.png' width='10%' src='.././snaps/img11573.png' data-src='.././snaps/img11573.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:01:02 PM</td>
+													<td class='step-details'>successfully clicked on menu<img data-featherlight='.././snaps/img35632.png' width='10%' src='.././snaps/img35632.png' data-src='.././snaps/img35632.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:01:12 PM</td>
+													<td class='step-details'>click on operacloud link successful<img data-featherlight='.././snaps/img32668.png' width='10%' src='.././snaps/img32668.png' data-src='.././snaps/img32668.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:01:30 PM</td>
+													<td class='step-details'>click on reports successful<img data-featherlight='.././snaps/img81149.png' width='10%' src='.././snaps/img81149.png' data-src='.././snaps/img81149.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:01:41 PM</td>
+													<td class='step-details'>click on manage reports successful<img data-featherlight='.././snaps/img88454.png' width='10%' src='.././snaps/img88454.png' data-src='.././snaps/img88454.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:01:46 PM</td>
+													<td class='step-details'>selected report group successfully<img data-featherlight='.././snaps/img38512.png' width='10%' src='.././snaps/img38512.png' data-src='.././snaps/img38512.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:01:56 PM</td>
+													<td class='step-details'>click on search button successful<img data-featherlight='.././snaps/img55074.png' width='10%' src='.././snaps/img55074.png' data-src='.././snaps/img55074.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:02:10 PM</td>
+													<td class='step-details'>click on report is successful<img data-featherlight='.././snaps/img26483.png' width='10%' src='.././snaps/img26483.png' data-src='.././snaps/img26483.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:02:13 PM</td>
+													<td class='step-details'>click on email link successful<img data-featherlight='.././snaps/img78228.png' width='10%' src='.././snaps/img78228.png' data-src='.././snaps/img78228.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:02:13 PM</td>
+													<td class='step-details'>email address entered successfully<img data-featherlight='.././snaps/img87468.png' width='10%' src='.././snaps/img87468.png' data-src='.././snaps/img87468.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:02:16 PM</td>
+													<td class='step-details'>file format selected successfully<img data-featherlight='.././snaps/img33503.png' width='10%' src='.././snaps/img33503.png' data-src='.././snaps/img33503.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:02:20 PM</td>
+													<td class='step-details'>clicked on email button successfully<img data-featherlight='.././snaps/img13307.png' width='10%' src='.././snaps/img13307.png' data-src='.././snaps/img13307.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:02:40 PM</td>
+													<td class='step-details'>click on useroptions passed<img data-featherlight='.././snaps/img25916.png' width='10%' src='.././snaps/img25916.png' data-src='.././snaps/img25916.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+	</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Creating a shift report</span>
+						<span class='test-time'>Jul 27, 2021 07:02:55 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 27, 2021 07:02:55 PM</span>
+	<span class='label end-time'>Jul 27, 2021 07:11:11 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 8m 15s+976ms</span>
+</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1 leaf pass' status='pass' test-id='8'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Creating a shift report</h5>
+						<span class="node-time label grey lighten-1 white-text">Jul 27, 2021 07:11:11 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 8m 15s+976ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:03:01 PM</td>
+													<td class='step-details'>successfully enteredNEWCAADMIN username<img data-featherlight='.././snaps/img80088.png' width='10%' src='.././snaps/img80088.png' data-src='.././snaps/img80088.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:03:06 PM</td>
+													<td class='step-details'>password entered Welcome123 successfully<img data-featherlight='.././snaps/img16418.png' width='10%' src='.././snaps/img16418.png' data-src='.././snaps/img16418.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:03:34 PM</td>
+													<td class='step-details'>successfully clicked on login button<img data-featherlight='.././snaps/img78395.png' width='10%' src='.././snaps/img78395.png' data-src='.././snaps/img78395.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:03:45 PM</td>
+													<td class='step-details'>successfully clicked on menu<img data-featherlight='.././snaps/img79824.png' width='10%' src='.././snaps/img79824.png' data-src='.././snaps/img79824.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:03:55 PM</td>
+													<td class='step-details'>click on operacloud link successful<img data-featherlight='.././snaps/img73812.png' width='10%' src='.././snaps/img73812.png' data-src='.././snaps/img73812.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:04:15 PM</td>
+													<td class='step-details'>click on reports successful<img data-featherlight='.././snaps/img25319.png' width='10%' src='.././snaps/img25319.png' data-src='.././snaps/img25319.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:04:20 PM</td>
+													<td class='step-details'>click on shift reports successful<img data-featherlight='.././snaps/img81135.png' width='10%' src='.././snaps/img81135.png' data-src='.././snaps/img81135.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:04:31 PM</td>
+													<td class='step-details'>successfully clicked on new button<img data-featherlight='.././snaps/img73641.png' width='10%' src='.././snaps/img73641.png' data-src='.././snaps/img73641.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:06:36 PM</td>
+													<td class='step-details'>successfully entered the newly created report in search field<img data-featherlight='.././snaps/img31602.png' width='10%' src='.././snaps/img31602.png' data-src='.././snaps/img31602.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:06:41 PM</td>
+													<td class='step-details'>click on search button successful<img data-featherlight='.././snaps/img72344.png' width='10%' src='.././snaps/img72344.png' data-src='.././snaps/img72344.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:06:52 PM</td>
+													<td class='step-details'>click on report is successful<img data-featherlight='.././snaps/img69970.png' width='10%' src='.././snaps/img69970.png' data-src='.././snaps/img69970.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:07:02 PM</td>
+													<td class='step-details'>click on Actions is successful<img data-featherlight='.././snaps/img63826.png' width='10%' src='.././snaps/img63826.png' data-src='.././snaps/img63826.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:07:07 PM</td>
+													<td class='step-details'>click on view options successful<img data-featherlight='.././snaps/img32221.png' width='10%' src='.././snaps/img32221.png' data-src='.././snaps/img32221.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:07:22 PM</td>
+													<td class='step-details'>click on click process successful<img data-featherlight='.././snaps/img38474.png' width='10%' src='.././snaps/img38474.png' data-src='.././snaps/img38474.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:07:54 PM</td>
+													<td class='step-details'>window switched successfully to title OPERA Cloud<img data-featherlight='.././snaps/img12391.png' width='10%' src='.././snaps/img12391.png' data-src='.././snaps/img12391.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:08:36 PM</td>
+													<td class='step-details'>Report execution status is completed<img data-featherlight='.././snaps/img44240.png' width='10%' src='.././snaps/img44240.png' data-src='.././snaps/img44240.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:09:12 PM</td>
+													<td class='step-details'>Report execution status is completed<img data-featherlight='.././snaps/img50996.png' width='10%' src='.././snaps/img50996.png' data-src='.././snaps/img50996.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:09:38 PM</td>
+													<td class='step-details'>verified the report view title<img data-featherlight='.././snaps/img82949.png' width='10%' src='.././snaps/img82949.png' data-src='.././snaps/img82949.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:10:38 PM</td>
+													<td class='step-details'>window switched successfully to title<img data-featherlight='.././snaps/img67914.png' width='10%' src='.././snaps/img67914.png' data-src='.././snaps/img67914.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:11:11 PM</td>
+													<td class='step-details'>click on useroptions passed<img data-featherlight='.././snaps/img84903.png' width='10%' src='.././snaps/img84903.png' data-src='.././snaps/img84903.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+	</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>Creating a scheduled report</span>
+						<span class='test-time'>Jul 27, 2021 07:11:26 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 27, 2021 07:11:26 PM</span>
+	<span class='label end-time'>Jul 27, 2021 07:15:48 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 4m 21s+357ms</span>
+</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1 leaf pass' status='pass' test-id='10'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Creating a scheduled report</h5>
+						<span class="node-time label grey lighten-1 white-text">Jul 27, 2021 07:15:48 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 4m 21s+357ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:11:32 PM</td>
+													<td class='step-details'>successfully enteredNEWCAADMIN username<img data-featherlight='.././snaps/img89804.png' width='10%' src='.././snaps/img89804.png' data-src='.././snaps/img89804.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:11:37 PM</td>
+													<td class='step-details'>password entered Welcome123 successfully<img data-featherlight='.././snaps/img15876.png' width='10%' src='.././snaps/img15876.png' data-src='.././snaps/img15876.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:12:05 PM</td>
+													<td class='step-details'>successfully clicked on login button<img data-featherlight='.././snaps/img38994.png' width='10%' src='.././snaps/img38994.png' data-src='.././snaps/img38994.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:12:16 PM</td>
+													<td class='step-details'>successfully clicked on menu<img data-featherlight='.././snaps/img62006.png' width='10%' src='.././snaps/img62006.png' data-src='.././snaps/img62006.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:12:26 PM</td>
+													<td class='step-details'>click on operacloud link successful<img data-featherlight='.././snaps/img5605.png' width='10%' src='.././snaps/img5605.png' data-src='.././snaps/img5605.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:12:44 PM</td>
+													<td class='step-details'>click on reports successful<img data-featherlight='.././snaps/img17642.png' width='10%' src='.././snaps/img17642.png' data-src='.././snaps/img17642.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:12:54 PM</td>
+													<td class='step-details'>click on manage reports successful<img data-featherlight='.././snaps/img33077.png' width='10%' src='.././snaps/img33077.png' data-src='.././snaps/img33077.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:05 PM</td>
+													<td class='step-details'>click on Manage Scheduled button successfull<img data-featherlight='.././snaps/img51868.png' width='10%' src='.././snaps/img51868.png' data-src='.././snaps/img51868.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:05 PM</td>
+													<td class='step-details'>You are here on Manage Scheduled reports page<img data-featherlight='.././snaps/img65338.png' width='10%' src='.././snaps/img65338.png' data-src='.././snaps/img65338.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:10 PM</td>
+													<td class='step-details'>successfully clicked on new button on Manage Scheduled reports page<img data-featherlight='.././snaps/img20721.png' width='10%' src='.././snaps/img20721.png' data-src='.././snaps/img20721.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:15 PM</td>
+													<td class='step-details'>selected report group successfully<img data-featherlight='.././snaps/img30128.png' width='10%' src='.././snaps/img30128.png' data-src='.././snaps/img30128.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:25 PM</td>
+													<td class='step-details'>click on search button successful<img data-featherlight='.././snaps/img72391.png' width='10%' src='.././snaps/img72391.png' data-src='.././snaps/img72391.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:36 PM</td>
+													<td class='step-details'>click on report  successful<img data-featherlight='.././snaps/img31215.png' width='10%' src='.././snaps/img31215.png' data-src='.././snaps/img31215.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:41 PM</td>
+													<td class='step-details'>clicked select button successfully<img data-featherlight='.././snaps/img61718.png' width='10%' src='.././snaps/img61718.png' data-src='.././snaps/img61718.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:13:51 PM</td>
+													<td class='step-details'>click on Report Parameters Next button is successful<img data-featherlight='.././snaps/img83866.png' width='10%' src='.././snaps/img83866.png' data-src='.././snaps/img83866.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:01 PM</td>
+													<td class='step-details'>click on Repeat Intervals Next button is successful<img data-featherlight='.././snaps/img81745.png' width='10%' src='.././snaps/img81745.png' data-src='.././snaps/img81745.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:07 PM</td>
+													<td class='step-details'>clicked on save button successfully<img data-featherlight='.././snaps/img44564.png' width='10%' src='.././snaps/img44564.png' data-src='.././snaps/img44564.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:12 PM</td>
+													<td class='step-details'>click on Actions menu is successful<img data-featherlight='.././snaps/img64111.png' width='10%' src='.././snaps/img64111.png' data-src='.././snaps/img64111.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:18 PM</td>
+													<td class='step-details'>click on RunReport Option is successful<img data-featherlight='.././snaps/img81676.png' width='10%' src='.././snaps/img81676.png' data-src='.././snaps/img81676.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:24 PM</td>
+													<td class='step-details'>click OK successfully on job information popup<img data-featherlight='.././snaps/img65522.png' width='10%' src='.././snaps/img65522.png' data-src='.././snaps/img65522.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:29 PM</td>
+													<td class='step-details'>click on view executed reports link is successful<img data-featherlight='.././snaps/img28211.png' width='10%' src='.././snaps/img28211.png' data-src='.././snaps/img28211.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:34 PM</td>
+													<td class='step-details'>click on actions in Executed Reports page successful<img data-featherlight='.././snaps/img35022.png' width='10%' src='.././snaps/img35022.png' data-src='.././snaps/img35022.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:14:39 PM</td>
+													<td class='step-details'>click on Preview report in Executed Reports page successful<img data-featherlight='.././snaps/img47710.png' width='10%' src='.././snaps/img47710.png' data-src='.././snaps/img47710.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:15:13 PM</td>
+													<td class='step-details'>window switched successfully to title<img data-featherlight='.././snaps/img70388.png' width='10%' src='.././snaps/img70388.png' data-src='.././snaps/img70388.png'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>7:15:48 PM</td>
+													<td class='step-details'>click on useroptions passed<img data-featherlight='.././snaps/img67130.png' width='10%' src='.././snaps/img67130.png' data-src='.././snaps/img67130.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+	</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>5</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>92</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Jul 27, 2021 06:47:49 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Jul 27, 2021 07:16:03 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 28m 13s+950ms</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 5,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				
+				passChild: 92,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				exceptionsChild: 0,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>

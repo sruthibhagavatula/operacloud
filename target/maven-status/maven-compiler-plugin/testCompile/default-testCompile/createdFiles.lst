@@ -1,0 +1,7 @@
+com\operacloud\testcases\TC001_SmokeTesting.class
+com\operacloud\testcases\TC005_EndOfDayTestCases.class
+com\operacloud\testcases\Login.class
+com\operacloud\testcases\TC002_OperaCloudReportsAndExportTestCases.class
+com\operacloud\testcases\TC004_OperaCloudProfileTestCases.class
+com\operacloud\testcases\Logout.class
+com\operacloud\testcases\TC003_OperaCloudReservationTestCases.class
